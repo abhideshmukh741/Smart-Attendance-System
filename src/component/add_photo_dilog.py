@@ -48,6 +48,6 @@ def add_photo_dilog():
             
     st.divider()
     if st.button('Done',type='primary',width='stretch'):
-        st.rerun()
+        st.rerun() #feature/ui
 
 
