@@ -9,7 +9,7 @@ import time
 def enroll_dilog():
     st.write('Enter the subject code provided by your teacher to enroll')
     join_code=st.text_input('Subject Code',placeholder='CSE210')
-    if st.button('Enroll Now',type='primary',width='stretch'):
+    if st.button('Enroll Now',type='primary',width='stretch',key='stundet_enrolll'):
         if join_code:
             res=supabase.table('subject').select('subject_id,name,subject_code').eq('subject_code',join_code).execute()
             if res.data:
@@ -24,9 +24,5 @@ def enroll_dilog():
                     enroll_student_to_subject(student_id,subject['subject_id'])
                     st.success('Sussesfully Enroll')
                     time.sleep(1)
-                    
-
-
-
         else:
-            st.warning('Please Enter the Subject code')  
+           st.warning('Please Enter the Subject code') 

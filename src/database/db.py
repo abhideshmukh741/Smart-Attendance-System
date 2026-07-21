@@ -51,9 +51,10 @@ def student_sub(Subject_code,Subject_name,Subject_sec,teacher_id):
 def get_student_subject_t(teacher_id):
     respose=supabase.table('subject').select("*,subject_students(count),attendace_logs(timestamp)").eq("teacher_id",teacher_id).execute()
     subject = respose.data
+    
     for sub in subject:
         sub['total_student']=sub.get("subject_students",[{}])[0].get('count',0) if sub.get('subject_students') else 0
-        attendance=sub.get("attendance_logs",[])
+        attendance=sub.get("attendace_logs",[])
         unique_section=len(set(log['timestamp'] for log in attendance))
         sub["total_classes"]=unique_section
         sub.pop('subject_students',None)

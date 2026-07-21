@@ -8,7 +8,7 @@ import streamlit as st
 import numpy as np
 from src.component.subject_card import subject_card
 from UI.main_style import header_style_student,student_style
-from src.component.header import header_for_student
+from src.component.header import header_for_student,header_for_student_1
 from src.component.enroll_dilog import enroll_dilog
 from src.database.db import unenroll_student_to_subject
 
@@ -34,7 +34,7 @@ def student_dashbord():
         st.header("Your Enrolled Subject")
 
     with c2:
-        if st.button('Enroll in Subject',type='tertiary',width='stretch'):
+        if st.button('Enroll in Subject',type='tertiary',width='stretch',key='student_en'):
             enroll_dilog()
       
 
@@ -67,7 +67,7 @@ def student_dashbord():
 
             stats=stats_map.get(sid,{"total":0,"attendace":0})
             def uneroll_button():
-                if st.button('Uneroll from this course',type='secondary',width='stretch'):
+                if st.button('Uneroll from this course',type='secondary',width='stretch',key=f"unenroll_{sub['subject_id']}"):
                     unenroll_student_to_subject(student_id,sid)
                     st.toast(f"Unrolled from {sub['name']} successfully!")
                     st.rerun()
