@@ -284,6 +284,7 @@ def teacher_tab_take_attendace():
 
 
 def teacher_tab_manage_subject():
+
     teacher_id=st.session_state.teacher_data['teacher_id']
     clm1,clm2 =st.columns(2)
 
@@ -294,6 +295,7 @@ def teacher_tab_manage_subject():
         if st.button('Creat New Subject',type='primary',width="stretch"):
             Create_subject_dilog(teacher_id)
 
+
     subject= get_student_subject_t(teacher_id)
     if subject:
         for sub in subject:
@@ -302,19 +304,19 @@ def teacher_tab_manage_subject():
                 ("Classes",sub["total_classes"])
             ]
             
-        def share_btn():
-            if st.button(f"Share Code: {sub['subject_code']}",key=f"share_{sub['name']}",type='secondary'):
-               share_subject_dilog(sub['name'],sub['subject_code'])
-            st.space()
+            def share_btn():
+               if st.button(f"Share Code: {sub['subject_code']}",key=f"share_{sub['name']}",type='secondary'):
+                    share_subject_dilog(sub['name'],sub['subject_code'])
+               st.space()
 
-        subject_card(
+            subject_card(
             name=sub['name'],
             code=sub['subject_code'],
             section=sub['section'],
             stats=states,
             footer_callback=None
-        )
-        share_btn()
+            )
+            share_btn()
     else:
         st.info("No Subject Found, Create One Above")
         

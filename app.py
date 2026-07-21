@@ -19,12 +19,24 @@ def main():
 
   match st.session_state['logged_in']:
     case 'teacher':
-      teacher_main2()
+      placeholder = st.empty()
+
+      with placeholder.container():
+            with st.spinner("Loading..."):
+              teacher_main2()
     case 'student':
-      student_screen()
+       placeholder = st.empty()
+
+       with placeholder.container():
+            with st.spinner("Loading..."):
+                student_screen()
 
     case 'none':
-      home_screen()
+        placeholder = st.empty()
+
+        with placeholder.container():
+            with st.spinner("Loading..."):
+              home_screen()
 
   
   if join_code:

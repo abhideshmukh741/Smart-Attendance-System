@@ -168,3 +168,38 @@ def header_for_student():
           st.rerun()
 
         st.markdown('</div>', unsafe_allow_html=True)
+
+def header_for_student_1():
+    header_style_student()
+    c1, c2 = st.columns([5, 1])   
+
+    with c1:
+        st.markdown("""
+        <div style="text-align:left;">
+            <h6>Welcome, students!</h6>
+            <h2>Class Management</h2>
+        </div>
+
+        <style>
+            h6 {
+                margin-bottom: 0px !important;
+                padding: 0px !important;
+            }
+
+            h2 {
+                margin-top: 0px !important;
+                padding: 0px !important;
+            }
+        </style>
+        """, unsafe_allow_html=True)
+
+        
+    with c2:
+
+        st.markdown('<div class="home-btn">', unsafe_allow_html=True)
+
+        if st.button("back", use_container_width=True,type="primary"):
+          st.session_state['logged_in'] = 'none'
+          st.rerun()
+
+        st.markdown('</div>', unsafe_allow_html=True)
