@@ -1,9 +1,36 @@
 import streamlit as st
-from src.component.attendance_result_dilog import show_attendance_result
 from src.database.config import supabase
 from src.pipelines.voice_pipeline import process_bulk_attendance
 import pandas as pd
 from datetime import datetime
+from src.database.db import create_attendance
+
+
+
+
+def show_attendance_result(df,logs):
+        
+        st.write("please review attendance befor confirming")
+        st.dataframe(df,hide_index=True,width="stretch")
+
+        col1,col2=st.columns(2)
+
+        with col1:
+            if st.button('Discard',type='tertiary',width='stretch'):
+              st.session_state.voice_attendance_result=None
+              st.session_state.attendance_image=[]
+              st.rerun()
+
+        with col2:
+            if st.button('Confirm & save',width='stretch',type='secondary'):
+                try:
+                    create_attendance(logs)
+                    st.toast("Attendance saved successfully")
+                    st.session_state.attendance_image=[]
+                    st.session_state.voice_attendance_result=None
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"Error saving attendance: {e}")
 
 @st.dialog('Voice Attendance')
 def voice_attendance_dilog(subject_ids):
@@ -26,10 +53,6 @@ def voice_attendance_dilog(subject_ids):
                 return
             
             audio_bytes=audio_data.read() if audio_data else None
-
-
-            st.write("Candidates Directory:", candidates_dir)
-            st.write("Number of candidates:", len(candidates_dir))
 
             detected_sources=process_bulk_attendance(audio_bytes,candidates_dir)
             

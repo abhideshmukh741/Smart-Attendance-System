@@ -16,6 +16,12 @@ from src.database.db import unenroll_student_to_subject
 def header_tech_1():
     header_style_student()
     header_for_student()
+
+def header_tech_2():
+    header_style_student()
+    header_for_student_1()
+    
+
   
     
 def student_dashbord():
@@ -87,14 +93,15 @@ def student_dashbord():
 
 
 
-def student_screen():
-    header_tech_1() 
+def student_screen(): 
     student_style()
 
     
     if "student_data" in st.session_state:
+        header_tech_1()
         student_dashbord()
         return
+    header_tech_2()
 
     st.markdown(
         '<div class="main-title">Student Dashboard</div>',
