@@ -8,6 +8,10 @@ from src.component.auto_enroll_dilog import auto_enroll_dilog
 
 
 def main():
+  st.set_page_config(
+     page_title='SnapClass-Making Attendance faster using Ai',
+     page_icon="UI\images\logo.png"
+  )
   if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = 'none'
 
