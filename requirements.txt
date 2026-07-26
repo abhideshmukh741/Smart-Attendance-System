@@ -22,3 +22,5 @@ resemblyzer
 
 setuptools
 wheel
+
+torch
