@@ -22,3 +22,6 @@ resemblyzer==0.1.4
 
 setuptools>=80
 wheel
+
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.3.1

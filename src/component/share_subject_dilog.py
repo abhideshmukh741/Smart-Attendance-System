@@ -4,7 +4,7 @@ import io
 
 @st.dialog("Share Subject Link")
 def share_subject_dilog(subject_name,subject_code):
-   app_domain="http://localhost:8501"
+   app_domain="smart-attendance-system-abhideshmukh"
    join_url=f"{app_domain}/?join-code={subject_code}"
 
    st.header("scanne to join")
