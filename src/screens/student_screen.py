@@ -84,8 +84,8 @@ def student_dashbord():
                     code=sub['subject_code'],
                     section=sub['section'],
                     stats=[
-                        {'Total :',stats['total']},
-                        {'Attended :',stats['attendace']}
+                        ('Total :',stats['total']),
+                        ('Attended :',stats['attendace'])
                        ],
                     footer_callback=uneroll_button()
                 )

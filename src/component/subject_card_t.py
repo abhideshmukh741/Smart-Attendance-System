@@ -7,15 +7,17 @@ def subject_card(name ,code,section,stats,footer_callback=None):
        <p style="color:#64748b; margin:10px 0;">Code : <span style="background:#E0E#FF;color:#5865F2; padding:2px 8px; border-redius:5px;">{code}</span> | Section : {section}</p>
        
        """
+    html+="</div>"
     if stats:
        html+="""
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
        """
+       html+="</div>"
        for label,value in stats:
            html+=f'<div style="background:#EB459E10;padding:5px 12px; border-radius:12px;font-size:0.9rem"><b>{value}</b> {label}</div>'
        
        html+="</div>"
-    html+="</div>"
+   
 
     st.markdown(html,unsafe_allow_html=True)
     if footer_callback:
