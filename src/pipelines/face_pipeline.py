@@ -1,23 +1,13 @@
+import dlib
 import numpy as np
+import face_recognition_models
+from sklearn.svm import SVC
 import streamlit as st
-
-try:
-    import dlib
-    import face_recognition_models
-    from sklearn.svm import SVC
-except Exception:  # pragma: no cover - optional dependency fallback
-    dlib = None
-    face_recognition_models = None
-    SVC = None
-
 from src.database.db import get_all_students
 
 
 @st.cache_resource
 def load_dlib_models():
-    if dlib is None or face_recognition_models is None:
-        raise RuntimeError("Face recognition dependencies are not installed.")
-
     detecter = dlib.get_frontal_face_detector()
     sp = dlib.shape_predictor(face_recognition_models.pose_predictor_model_location())
     facerec = dlib.face_recognition_model_v1(face_recognition_models.face_recognition_model_location())
@@ -38,9 +28,6 @@ def get_face_embedding(image):
 
 
 def gate_trained_model():
-    if SVC is None:
-        return None
-
     x = []
     y = []
 
@@ -69,11 +56,7 @@ def train_classifier():
 
 
 def predict_attendance(group_image):
-    try:
-        encoding = get_face_embedding(group_image)
-    except Exception as exc:
-        st.warning(f"Face attendance disabled: {exc}")
-        return {}, [], 0
+    encoding = get_face_embedding(group_image)
 
     detected_student = {}
     model_dta = gate_trained_model()

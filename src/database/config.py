@@ -38,4 +38,4 @@ def _build_client():
     return create_client(url, key)
 
 
-supabase: Client = _build_client())
+supabase: Client = _build_client()
