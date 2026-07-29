@@ -37,6 +37,7 @@ def voice_attendance_dilog(subject_ids):
     st.write("Record Audio for Attendance,Say 'I am present' to mark your attendance")
     audio_data=None
     audio_data=st.audio_input("Record Audio")
+    st.warning("Please record audio first.")
     if st.button("Process Attendance",type='primary',width='stretch'):
         with st.spinner('Processing Audio for Attendance...'):
             enrolled_stud=supabase.table('subject_students').select("*,student(*)").eq('subject_id', subject_ids).execute()

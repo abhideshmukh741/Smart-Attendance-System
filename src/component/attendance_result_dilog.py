@@ -28,9 +28,5 @@ def show_attendance_result(df,logs):
                     st.error(f"Error saving attendance: {e}")
     
 
-@st.dialog('Attendance Result')
-def attendance_result_dilog(df,logs):
-    st.write("Attendance Result")
-    show_attendance_result(df,logs)
 
                 
