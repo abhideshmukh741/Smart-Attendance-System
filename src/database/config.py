@@ -8,4 +8,4 @@ supabase: Client = create_client(
     st.secrets["supabase_key"]
 )
 
-supabase: Client = _build_client()
+
