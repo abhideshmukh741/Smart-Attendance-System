@@ -1,23 +1,13 @@
-import io
-
+from resemblyzer import VoiceEncoder, preprocess_wav
 import numpy as np
 import streamlit as st
-
-try:
-    from resemblyzer import VoiceEncoder, preprocess_wav
-    import librosa
-except Exception:  # pragma: no cover - optional dependency fallback
-    VoiceEncoder = None
-    preprocess_wav = None
-    librosa = None
-
+import io
+import librosa
 from src.database.db import get_all_students
 
 
 @st.cache_resource
 def load_voice_encoder():
-    if VoiceEncoder is None:
-        raise RuntimeError("Voice processing dependencies are not installed.")
     return VoiceEncoder()
 
 
