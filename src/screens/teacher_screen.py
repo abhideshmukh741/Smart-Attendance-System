@@ -2,7 +2,7 @@ from PIL import Image
 import streamlit as st
 
 
-from src.component.attendance_result_dilog import attendance_result_dilog
+from src.component.attendance_result_dilog import attendance_result_dilogg
 from src.database.config import supabase
 from UI.main_style import header_style_teacher, teacher_style
 from src.pipelines.face_pipeline import predict_attendance
@@ -273,7 +273,7 @@ def teacher_tab_take_attendace():
                                  "is_present":bool(is_present)
                              })
 
-                     attendance_result_dilog(pd.DataFrame(result),attendace_to_log)
+                     attendance_result_dilogg(pd.DataFrame(result),attendace_to_log)
 
 
     with c3:
