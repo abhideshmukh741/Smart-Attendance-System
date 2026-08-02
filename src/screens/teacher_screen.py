@@ -113,10 +113,10 @@ def teacher_login():
     st.subheader("Teacher Login")
 
     st.write("Please enter your username.")
-    username = st.text_input("username", key="teacher_username")
+    username = st.text_input(key="teacher_username")
 
     st.write("Please enter your password.")
-    password = st.text_input("Password", type="password", key="teacher_password")
+    password = st.text_input(type="password", key="teacher_password")
 
     st.write("Don't have an account? Sign up now!")
 
