@@ -14,13 +14,13 @@ def home_screen():
     with btn1:
         st.header("i am a Teacher")
         st.image("UI/images/teacher.png", width=110)
-        if st.button("Login as Teacher",width=200):
+        if st.button("Faculty Portal",width=200):
             st.session_state['logged_in'] = 'teacher'
             st.rerun()
     with btn2:
         st.header("i am a Student")
         st.image("UI/images/student.png", width=150)
-        if st.button("Login as Student",width=200):
+        if st.button("Student Portal",width=200):
             st.session_state['logged_in'] = 'student'
             st.rerun()
 
